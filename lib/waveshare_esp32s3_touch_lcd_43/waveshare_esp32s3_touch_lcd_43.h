@@ -1,6 +1,11 @@
 // 2025-02-06 21:30:00 v1.2.0 - I2C HAL abstraction + lazy touch init
 #pragma once
 #include "roo_display/hal/config.h"
+
+#if !defined(ESP32) || !(CONFIG_IDF_TARGET_ESP32S3)
+#warning Compilation target must be ESP32_S3 for this device.
+#else
+
 // Waveshare ESP32-S3-Touch-LCD-4.3 display device support.
 // Hardware configuration for roo_display library.
 
@@ -57,3 +62,5 @@ class WaveshareEsp32s3TouchLcd43 : public ComboDevice {
 }  // namespace waveshare
 }  // namespace products
 }  // namespace roo_display
+
+#endif  // ESP32 && CONFIG_IDF_TARGET_ESP32S3

@@ -3,8 +3,10 @@
 
 #include "roo_display/hal/config.h"
 
-#include "waveshare_esp32s3_touch_lcd_43.h"
+#if !defined(ESP32) || !(CONFIG_IDF_TARGET_ESP32S3)
+#else
 
+#include "waveshare_esp32s3_touch_lcd_43.h"
 #include "roo_logging.h"
 
 namespace roo_display {
@@ -174,3 +176,5 @@ void WaveshareEsp32s3TouchLcd43::writeEXIO(uint8_t pin, bool state) {
 }  // namespace waveshare
 }  // namespace products
 }  // namespace roo_display
+
+#endif  // ESP32 && CONFIG_IDF_TARGET_ESP32S3
